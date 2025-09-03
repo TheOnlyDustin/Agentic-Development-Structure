@@ -1,346 +1,417 @@
-# DEVELOPMENT_LOG.md - Session History
-## Universal AI Agent Development Log
+# DEVELOPMENT_LOG_TEMPLATE.md
+## Self-Deploying Development Log System with Smart Indexing
 
-> **AI AGENT**: Add a new entry for EVERY work session. Never delete old entries. Read recent entries before starting work.
+---
 
-## 📖 How to Use This Log
+# 🚀 PART 1: DEPLOYMENT INSTRUCTIONS
 
-### Starting a Session
-1. **Read the last 2-3 entries** to understand current state
-2. **Create a new entry** using the template below
-3. **Note your session goal** before starting work
-4. **Update continuously** as you work, not just at the end
+> **AI AGENT**: Execute these steps to deploy the development logging system.
 
-### During Development
-- Log decisions AS YOU MAKE THEM
-- Document workarounds IMMEDIATELY
-- Note any unexpected discoveries
-- Track time spent on tasks
+## Step 1: Create DEVELOPMENT_LOG.md
+Copy the template from Part 2 below into a new file called `DEVELOPMENT_LOG.md` in the project root.
 
-### Ending a Session
-- Complete ALL sections of your entry
-- Verify "Next Session Should" is specific
-- Ensure another agent could continue your work
-- Run verification commands and log results
+## Step 2: Generate Work Area Codes
+Based on your INDEX.md analysis, identify the primary work areas and assign 4-5 character codes:
+
+### Standard Code Matrix (Extend based on project)
+```
+# Core Infrastructure
+SETUP - Initial setup, configuration, environment
+NODE  - Node.js runtime issues, package management
+BUILD - Build process, bundling, compilation
+DEPS  - Dependencies, package updates
+ENV   - Environment variables, configuration
+
+# Data & Storage
+JSON  - JSON structure, parsing, validation
+DATA  - Database operations, queries
+CACHE - Caching layer, Redis, memory cache
+FILE  - File system operations
+MIGR  - Database migrations
+
+# Authentication & Security
+AUTH  - Authentication logic
+OAUTH - OAuth implementation (Google, GitHub, etc.)
+SESS  - Session management
+SECUR - Security fixes, vulnerabilities
+CORS  - CORS configuration
+
+# API & Communication
+API   - API endpoints, REST operations
+GRAPH - GraphQL schemas, resolvers
+SOCK  - WebSocket, real-time communication
+HOOK  - Webhooks, external integrations
+
+# Frontend
+UI    - User interface components
+STYLE - CSS, styling, themes
+REACT - React/Vue/Angular specific
+STATE - State management (Redux, MobX)
+ROUTE - Routing, navigation
+
+# Quality & Testing
+TEST  - Test creation, test fixes
+LINT  - Linting, code style
+PERF  - Performance optimization
+DEBUG - Debugging sessions
+ERROR - Error handling
+
+# DevOps
+DOCK  - Docker, containerization
+CI    - CI/CD pipeline
+DEPLOY- Deployment issues
+MONITOR- Monitoring, logging
+
+# Documentation
+DOCS  - Documentation updates
+INDEX - INDEX.md updates
+README- README updates
+```
+
+Add project-specific codes as discovered in the codebase.
+
+## Step 3: Backfill from Historical Data
+
+### 3.1 Extract Git History
+```bash
+# Get commit history with details
+git log --pretty=format:"%h|%ad|%s|%an" --date=short > git_history.tmp
+
+# Get file change statistics
+git log --stat --pretty=format:"%h|%ad|%s" --date=short > git_changes.tmp
+
+# Identify major commits (more than 10 files changed)
+git log --stat --pretty=format:"%h|%ad|%s" --date=short | grep -B2 "files changed" | grep -E "[1-9][0-9]+ files" -B2
+```
+
+### 3.2 Analyze Existing Documentation
+Review these sources for historical context:
+- Commit messages for work descriptions
+- PR descriptions if available
+- TODO/FIXME comments with dates
+- Changelog or release notes
+- Any existing dev logs or notes
+- Steering documents showing decisions
+
+### 3.3 Create Retroactive Entries
+For each significant commit or work session found:
+1. Identify the work area codes that apply
+2. Create a log entry in the standard format
+3. Note the actual or estimated date
+4. Add line number to the index
+
+## Step 4: Initialize the Index System
+At the top of DEVELOPMENT_LOG.md, populate the Quick Reference Index with line numbers for each code.
+
+## Step 5: Move Template to DOCS
+```bash
+# Create DOCS folder if needed
+mkdir -p DOCS
+
+# Move this template file
+mv DEVELOPMENT_LOG_TEMPLATE.md DOCS/
+
+# Update any references in INDEX.md
+```
+
+## Step 6: Add User Prompt to INDEX.md
+Add this reminder in the INDEX.md header:
+```markdown
+<!-- 
+📝 LOGGING REMINDER:
+After each development task, update DEVELOPMENT_LOG.md using:
+"Please create a development log entry for the work just completed, using the codes from the matrix and updating the line number index"
+-->
+```
+
+## Step 7: Verification
+- [ ] DEVELOPMENT_LOG.md exists in root
+- [ ] Quick Reference Index is populated
+- [ ] Work Area Code Matrix includes all relevant areas
+- [ ] Historical entries are backfilled (if git history exists)
+- [ ] Template moved to DOCS/
+- [ ] INDEX.md references are updated
+- [ ] User prompt is documented
+
+---
+
+# 📋 PART 2: DEVELOPMENT_LOG.md TEMPLATE
+
+> **Copy everything below this line into DEVELOPMENT_LOG.md**
+
+---
+
+# DEVELOPMENT_LOG.md
+## Structured Development History with Smart Indexing
+
+> **Quick Usage**: Find all related entries using the index below. Codes show line numbers where related work appears.
+
+---
+
+## 🔍 Quick Reference Index
+
+> **Format**: CODE: line#, line#, line# (entries related to this work area)
+
+```
+SETUP: [PLACEHOLDER: line numbers]
+NODE:  [PLACEHOLDER: line numbers]
+BUILD: [PLACEHOLDER: line numbers]
+JSON:  [PLACEHOLDER: line numbers]
+DATA:  [PLACEHOLDER: line numbers]
+AUTH:  [PLACEHOLDER: line numbers]
+OAUTH: [PLACEHOLDER: line numbers]
+API:   [PLACEHOLDER: line numbers]
+TEST:  [PLACEHOLDER: line numbers]
+UI:    [PLACEHOLDER: line numbers]
+ERROR: [PLACEHOLDER: line numbers]
+PERF:  [PLACEHOLDER: line numbers]
+DOCS:  [PLACEHOLDER: line numbers]
+[Add more codes as needed]
+```
+
+### 🔄 Multi-Code Intersections
+> Entries appearing in multiple categories (line#: CODES)
+
+```
+[PLACEHOLDER: line#]: CODE1, CODE2, CODE3
+Example: 
+Line 87: NODE, JSON, AUTH (Node.js JSON parsing in auth module)
+Line 145: API, TEST, PERF (API endpoint testing and optimization)
+```
+
+---
+
+## 📊 Work Area Code Matrix
+
+### Active Codes for This Project
+| Code | Area | Description | First Used | Last Used | Entry Count |
+|------|------|-------------|------------|-----------|-------------|
+| SETUP | Infrastructure | Project setup, configuration | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| NODE | Runtime | Node.js issues, npm/yarn | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| JSON | Data Format | JSON structure, parsing | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| AUTH | Authentication | Login, user verification | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| API | Endpoints | REST API development | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| TEST | Testing | Unit, integration, E2E | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+### Reserved Codes (Add if needed)
+`GRAPH`, `SOCK`, `CACHE`, `MIGR`, `DOCK`, `CI`, `DEPLOY`, `MONITOR`, `SECUR`, `CORS`, `STYLE`, `REACT`, `STATE`, `ROUTE`
 
 ---
 
 ## 📝 Entry Template
 
-> **Copy this template for each new session**
-
 ```markdown
-## [DATE] [TIME] - Session #[NUMBER]
+---
+### [LINE#] | [DATE] [TIME] | [CODES: CODE1, CODE2, CODE3]
+**Summary**: [One-line description of what was accomplished]
+**Duration**: [Actual time spent]
+**Impact**: [Files: X modified, Y created | Tests: +Z | Coverage: ±N%]
 
-### 🤖 Session Info
-- **Agent**: [Your identifier - Model/Name]
-- **Phase**: [Current phase from PROJECT_INDEX.md]
-- **Duration**: [Start time - End time]
-- **Status**: [Completed | In Progress | Blocked]
+#### Changes
+- [Specific change with file reference if needed]
+- [Use bullet points for clarity]
 
-### 🎯 Session Goal
-[What you planned to accomplish this session]
+#### Issues Resolved
+- [Issue description] → [Solution applied]
 
-### ✅ Completed Tasks
-- [ ] [Checkbox list of planned tasks]
-- [ ] [Mark completed with X]
-- [ ] [Add unexpected tasks completed]
+#### Discovered
+- [Unexpected finding that affects future work]
 
-### 📁 Files Modified/Created
-\`\`\`
-[Path] - [Action: Created|Modified|Deleted] - [Brief description]
-/src/index.ts - Created - Application entry point
-/config/database.js - Modified - Added connection pooling
-\`\`\`
+#### TODO Generated
+- [ ] [New task created from this work]
 
-### 🔧 Decisions & Rationale
-> Document WHY you made specific choices
-
-**Decision**: [What you decided]
-**Options Considered**: [Alternative approaches]
-**Reasoning**: [Why you chose this approach]
-**Impact**: [How this affects other modules]
-
-### 🐛 Issues & Solutions
-> Every problem and how you solved/worked around it
-
-**Issue #1**: [Problem description]
-- **Error Message**: \`[Exact error if applicable]\`
-- **Cause**: [Root cause]
-- **Solution**: [How you fixed/worked around it]
-- **TODO**: [Permanent fix needed? - Add to PROJECT_INDEX.md]
-
-### 🧪 Testing & Verification
-\`\`\`bash
-# Commands run to verify work
-[command] - [result: ✅ Pass | ❌ Fail | ⚠️ Warning]
-
-npm test - ✅ All tests passing (15/15)
-npm run dev - ✅ Server starts on port 3000
-curl http://localhost:3000/api/health - ✅ Returns {"status":"ok"}
-\`\`\`
-
-### 📌 Placeholders & Mocks
-> Temporary code that needs replacement
-
-- **Mock/Placeholder**: [What's temporary]
-  - **Location**: \`[File:Line]\`
-  - **Purpose**: [Why it's there]
-  - **Replace with**: [What it should become]
-  - **Priority**: [High|Medium|Low]
-
-### 🔄 Dependencies & Packages
-**Added**: 
-- \`package-name@version\` - [Why needed]
-
-**Removed**:
-- \`package-name\` - [Why removed]
-
-**Discovered Requirements**:
-- [Package/tool needed but not installed]
-
-### 💡 Discoveries & Learnings
-> Unexpected findings that affect the project
-
-- **Discovery**: [What you learned]
-  **Impact**: [How this affects the project]
-  **Action**: [What needs to be done]
-
-### ⚠️ Warnings for Next Session
-
-**IMPORTANT - READ BEFORE STARTING**:
-1. [Critical information]
-2. [Don't change this thing because...]
-3. [Watch out for...]
-
-### 🎯 Next Session Should
-
-**Priority #1**: [Most important task]
-- Start with: [Specific file/function]
-- Goal: [What to accomplish]
-- Context: [Why this is next]
-
-**Priority #2**: [Second task if time]
-**Priority #3**: [Third task if time]
-
-**Blocked By**: [Any blockers preventing progress]
-
-### 📊 Session Metrics
-- **Files Created**: [Number]
-- **Files Modified**: [Number]
-- **Lines of Code**: [Approximate]
-- **Test Coverage**: [Before] → [After]
-- **Commits**: [Number if using git]
-
-### 🔗 Helpful Resources
-- [Links to documentation used]
-- [Stack Overflow answers referenced]
-- [Tools or scripts created]
-
-### 💭 Raw Notes
-> Unstructured thoughts/notes during development
-\`\`\`
-[Paste any raw notes, console outputs, or thoughts here]
-\`\`\`
+#### Commit Refs
+`[commit hash]` [commit message if different from summary]
 
 ---
 ```
 
 ---
 
-## 📊 Cumulative Statistics
+## 🗂️ Development Entries
 
-> **Agent**: Update these running totals each session
-
-**Total Sessions**: [PLACEHOLDER: 0]  
-**Total Hours**: [PLACEHOLDER: 0]  
-**Total Files Created**: [PLACEHOLDER: 0]  
-**Total Files Modified**: [PLACEHOLDER: 0]  
-**Total Tests Written**: [PLACEHOLDER: 0]  
-**Current Test Coverage**: [PLACEHOLDER: 0%]  
+> **Newest entries at the top. Line numbers are absolute from start of file.**
 
 ---
 
-## 🏆 Milestones Reached
+### [LINE#] | 2024-XX-XX HH:MM | CODES: [PLACEHOLDER]
+**Summary**: [PLACEHOLDER: Backfilled from git history or created new]
+**Duration**: [PLACEHOLDER]
+**Impact**: Files: X modified | Tests: +Y | Coverage: ±Z%
 
-> **Agent**: Log major accomplishments
+#### Changes
+- [PLACEHOLDER]
 
-| Date | Milestone | Sessions Required | Notes |
-|------|-----------|------------------|-------|
-| [PLACEHOLDER] | Project initialized | 1 | [Notes] |
-| [PLACEHOLDER] | First successful build | X | [Notes] |
-| [PLACEHOLDER] | [Milestone] | X | [Notes] |
+#### Issues Resolved
+- [PLACEHOLDER] → [PLACEHOLDER]
 
----
+#### Discovered
+- [PLACEHOLDER]
 
-## 🔄 Handoff Protocol
+#### TODO Generated
+- [ ] [PLACEHOLDER]
 
-### For Incoming Agent
-1. Read last 3 session entries
-2. Check PROJECT_INDEX.md current status
-3. Run verification commands from last session
-4. Review "Warnings" and "Next Session Should"
-5. Continue from documented stopping point
-
-### For Outgoing Agent
-1. Complete your session entry FULLY
-2. Update PROJECT_INDEX.md status
-3. Commit/save all changes
-4. Run tests and document results
-5. Clear "Next Priority" in PROJECT_INDEX.md
+#### Commit Refs
+`[PLACEHOLDER]`
 
 ---
 
-## 🚨 Critical Information
-
-> **Agent**: Information that EVERY agent needs to know
-
-### Environment Setup
-- **Required Tools**: [PLACEHOLDER: Node v18+, etc.]
-- **Environment Variables**: [PLACEHOLDER: See .env.template]
-- **Local Services**: [PLACEHOLDER: Database on port 5432]
-
-### Project Quirks
-- [PLACEHOLDER: Things that aren't obvious]
-- [PLACEHOLDER: Workarounds that must stay]
-- [PLACEHOLDER: Non-standard configurations]
-
-### Do NOT Change
-- [PLACEHOLDER: Critical configurations]
-- [PLACEHOLDER: Working workarounds]
-- [PLACEHOLDER: Hard-won solutions]
+[Continue with more entries...]
 
 ---
 
-## 🗂️ Session History
+## 📈 Statistics & Patterns
 
-> **Entries start below. Newest first.**
+### Most Active Work Areas (Last 30 Days)
+| Code | Entries | Time Spent | Issues Fixed | Tests Added |
+|------|---------|------------|--------------|-------------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+### Common Issue Patterns
+| Pattern | Occurrences | Typical Fix | Prevention |
+|---------|-------------|-------------|------------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+### Development Velocity
+| Period | Entries | Major Changes | Issues Resolved | Tests Added |
+|--------|---------|---------------|-----------------|-------------|
+| This Week | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| Last Week | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| This Month | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
 ---
 
-### 📝 Example Entry (Delete after first real entry)
+## 🔧 Recurring Tasks Registry
 
-## 2024-01-15 14:30 - Session #1
+> Tasks that appear frequently - use as templates
 
-### 🤖 Session Info
-- **Agent**: Claude-Sonnet-3.5
-- **Phase**: Phase 1 - Foundation
-- **Duration**: 14:30 - 16:45
-- **Status**: Completed
+### NODE - Package Updates
+- Check for outdated: `npm outdated`
+- Update carefully: `npm update [package]`
+- Test after update: `npm test`
+- Common issues: peer dependencies, breaking changes
 
-### 🎯 Session Goal
-Initialize project structure and set up development environment
+### TEST - Coverage Improvements
+- Run coverage: `npm run test:coverage`
+- Identify gaps: Check uncovered lines
+- Add tests: Focus on critical paths
+- Update INDEX.md coverage stats
 
-### ✅ Completed Tasks
-- [X] Initialize Next.js project
-- [X] Configure TypeScript
-- [X] Set up folder structure
-- [ ] Configure Docker (moved to next session)
+### API - Endpoint Addition
+- Define route in router
+- Implement controller logic
+- Add validation middleware
+- Create tests
+- Update API documentation
+- Add to INDEX.md API registry
 
-### 📁 Files Modified/Created
-```
-/package.json - Created - Project dependencies
-/tsconfig.json - Created - TypeScript configuration
-/src/index.ts - Created - Entry point
-/.env.template - Created - Environment template
-```
+[Add more recurring patterns as discovered]
 
-### 🔧 Decisions & Rationale
+---
 
-**Decision**: Use Next.js App Router instead of Pages Router
-**Options Considered**: Pages Router (simpler), App Router (newer)
-**Reasoning**: App Router is the recommended approach for new projects
-**Impact**: All routes will be in /app directory, not /pages
+## 🚨 Critical Learnings
 
-### 🐛 Issues & Solutions
+> Important discoveries that affect the entire project
 
-**Issue #1**: Port 3000 already in use
-- **Error Message**: `EADDRINUSE: address already in use :::3000`
-- **Cause**: Another service running on port 3000
-- **Solution**: Changed to port 3001 in package.json
-- **TODO**: Document port change in README
+### [DATE] - [CODES]
+**Learning**: [PLACEHOLDER: What was learned]
+**Impact**: [PLACEHOLDER: How this affects the project]
+**Action**: [PLACEHOLDER: What to do about it]
 
-### 🧪 Testing & Verification
+---
+
+## 🔄 Integration Points
+
+### Links to INDEX.md Sections
+- Current Status: See INDEX.md#current-status
+- File Registry: See INDEX.md#file-registry
+- API Registry: See INDEX.md#api-registry
+- Test Coverage: See INDEX.md#testing-strategy
+
+### External References
+- [Git Repository]: [PLACEHOLDER: URL]
+- [CI/CD Pipeline]: [PLACEHOLDER: URL]
+- [Issue Tracker]: [PLACEHOLDER: URL]
+
+---
+
+## 📋 Maintenance Commands
+
+### Find Entries by Code
 ```bash
-npm run dev - ✅ Server starts on port 3001
-npm run build - ✅ Builds successfully
-npm test - ⚠️ No tests yet
+# Find all JSON-related entries
+grep -n "CODES:.*JSON" DEVELOPMENT_LOG.md
+
+# Count entries by code
+grep -c "NODE" DEVELOPMENT_LOG.md
+
+# Find entries from specific date
+grep -n "2024-12-15" DEVELOPMENT_LOG.md
 ```
 
-### 📌 Placeholders & Mocks
-- **Mock/Placeholder**: Hardcoded API URL
-  - **Location**: `/src/config/api.ts:5`
-  - **Purpose**: Development testing
-  - **Replace with**: Environment variable
-  - **Priority**: High
+### Update Line Index
+```bash
+# Get line numbers for a code (example: NODE)
+grep -n "CODES:.*NODE" DEVELOPMENT_LOG.md | cut -d: -f1
 
-### 🔄 Dependencies & Packages
-**Added**: 
-- `next@14.0.0` - Framework
-- `typescript@5.0.0` - Type safety
-- `@types/react@18.0.0` - React types
-
-### 💡 Discoveries & Learnings
-- **Discovery**: Next.js 14 has built-in TypeScript support
-  **Impact**: No need for separate TS configuration
-  **Action**: Removed redundant TS setup steps
-
-### ⚠️ Warnings for Next Session
-
-**IMPORTANT - READ BEFORE STARTING**:
-1. Server runs on port 3001, NOT 3000
-2. Don't change the App Router structure
-3. Environment variables not set up yet
-
-### 🎯 Next Session Should
-
-**Priority #1**: Set up environment variables
-- Start with: Create .env.local from .env.template
-- Goal: Configure all required environment variables
-- Context: Needed before database connection
-
-**Priority #2**: Initialize database connection
-**Priority #3**: Create basic data models
-
-**Blocked By**: Need database credentials
-
-### 📊 Session Metrics
-- **Files Created**: 12
-- **Files Modified**: 3
-- **Lines of Code**: ~500
-- **Test Coverage**: 0% → 0% (no tests yet)
-- **Commits**: 2
-
-### 🔗 Helpful Resources
-- https://nextjs.org/docs/app
-- https://www.typescriptlang.org/docs/
-
-### 💭 Raw Notes
+# Find multi-code entries
+grep -n "CODES:.*,.*," DEVELOPMENT_LOG.md
 ```
-Had to restart npm install three times due to network issues
-Consider using pnpm for faster installs
-Remember to add .env.local to .gitignore
+
+### Generate Statistics
+```bash
+# Count total entries
+grep -c "^### \[LINE#\]" DEVELOPMENT_LOG.md
+
+# This week's entries
+grep "$(date +%Y-%m)" DEVELOPMENT_LOG.md | grep -c "^### \[LINE#\]"
 ```
 
 ---
 
-## [PLACEHOLDER: Your first session entry goes here]
+## 🤖 AI Agent Instructions
+
+### When Creating New Entries:
+1. **Assign appropriate codes** from the matrix (2-4 codes per entry typically)
+2. **Note the line number** where your entry starts
+3. **Update the Quick Reference Index** with the new line number
+4. **Update intersection list** if entry has multiple codes
+5. **Keep entries concise** - link to INDEX.md for details
+6. **Focus on WHAT changed and WHY**, not extensive HOW
+
+### When Reading History:
+1. **Use the Quick Reference Index** to find related work
+2. **Check intersections** for complex issues
+3. **Review patterns** in Statistics section
+4. **Check Critical Learnings** before starting work
+
+### Maintenance Tasks:
+- Every 50 entries: Archive older entries to `/DOCS/DEVELOPMENT_LOG_ARCHIVE_[date].md`
+- Weekly: Update Statistics & Patterns section
+- Monthly: Review and consolidate Critical Learnings
 
 ---
 
-## 📚 Log Archive
+## 📝 User Prompts for Continuous Logging
 
-> **After 20+ sessions, move older entries here to keep working log manageable**
+### After Each Development Session:
+> "Please create a development log entry for the work just completed, using the codes from the matrix and updating the line number index"
 
-[Archived entries would go here]
+### For Historical Backfill:
+> "Please analyze the git history and existing documentation to create retroactive development log entries, assigning appropriate codes and building the line number index"
 
----
-
-**Log Version**: 1.0.0  
-**Template Source**: Universal AI Agent Development Log  
-**Log Started**: [PLACEHOLDER: Date]  
-**Total Entries**: [PLACEHOLDER: 0]  
+### For Pattern Analysis:
+> "Please analyze the development log to identify patterns, update the statistics section, and highlight any critical learnings"
 
 ---
 
-### 🤖 Remember: Your future self (or another agent) will thank you for detailed logs!
+**Log Version**: 2.0.0  
+**Indexing System**: Line-based with code matrix  
+**Started**: [PLACEHOLDER: Date]  
+**Total Entries**: [PLACEHOLDER: Count]  
+**Last Index Update**: [PLACEHOLDER: Date]  
+
+---
+
+### 💡 Remember: This log is for WHAT happened and WHY, not HOW. The HOW lives in the code and INDEX.md.

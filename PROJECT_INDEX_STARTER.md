@@ -1,40 +1,141 @@
-# PROJECT_INDEX.md - Master File Registry
-## Universal AI Agent Development Tracker
-
-> **AI AGENT**: This is your source of truth. Read this FIRST, update it ALWAYS.
-
-## 🤖 How to Use This Index
-
-### First Time Setup (Agent Instructions)
-1. **Replace all placeholders** marked with `[PLACEHOLDER]`
-2. **Update project details** in the Overview section
-3. **Define your phases** based on logical build segments
-4. **List all planned files** in the File Registry
-5. **Set initial status** to "Phase 1 - Not Started"
-6. **Save this file** and begin development
-
-### During Development
-- Update file status: ⏳ Pending → 🚧 In Progress → ✅ Complete
-- Mark completed phases with checkboxes
-- Document discovered dependencies
-- Note any deviations from plan
-- Update "Last Modified" timestamps
-
-### Before Switching Agents/Sessions
-- Ensure "Current Status" is accurate
-- Update "Next Priority" with specific task
-- Check all status indicators match reality
-- Verify DEVELOPMENT_LOG.md is current
+# PROJECT_INDEX_STARTER.md
+## Self-Deploying Project Index System for AI-Assisted Development
 
 ---
+
+# 🚀 PART 1: DEPLOYMENT INSTRUCTIONS
+
+> **AI AGENT**: Follow these steps exactly to deploy the indexing system for this project.
+
+## Step 1: Create INDEX.md
+Copy the template from Part 2 below into a new file called `INDEX.md` in the project root.
+
+## Step 2: Analyze the Codebase
+Review these sources to gather project information:
+- **README.md** - Project overview and setup instructions
+- **Steering documents** - Architecture decisions, design docs
+- **DOCS folder** - Any existing documentation
+- **Root directory files** - Often contains unfiled notes, TODO lists, or developer documentation
+- **Configuration files** - package.json, .env files, docker-compose.yml, etc.
+- **Source code structure** - Examine /src, /lib, /app directories
+
+## Step 3: Backfill INDEX.md
+Using the information gathered, complete the INDEX.md file by:
+1. **Replace ALL placeholders** marked with `[PLACEHOLDER]`
+2. **Map the complete file structure** - every file gets an entry
+3. **Document discovered dependencies** from package files
+4. **Identify logical development phases** based on code organization
+5. **Note any technical debt** found in comments or structure
+6. **List all APIs/routes** discovered in the codebase
+7. **Document environment variables** found in code or config files
+
+## Step 4: Organize Documentation
+1. **Create DOCS folder** if it doesn't exist:
+   ```bash
+   mkdir -p DOCS
+   ```
+
+2. **Move this file** (PROJECT_INDEX_STARTER.md) to DOCS folder:
+   ```bash
+   mv PROJECT_INDEX_STARTER.md DOCS/
+   ```
+
+3. **Move any loose documentation** from root to DOCS:
+   - Any .md files (except README.md and INDEX.md)
+   - Any .txt files with documentation
+   - Any steering documents or notes
+   ```bash
+   # Example moves (adjust based on what you find):
+   mv NOTES.md DOCS/ 2>/dev/null || true
+   mv TODO.md DOCS/ 2>/dev/null || true
+   mv ARCHITECTURE.md DOCS/ 2>/dev/null || true
+   ```
+
+## Step 5: Update INDEX.md References
+Update any document paths in INDEX.md to reflect the new DOCS/ location:
+- Change references from `/NOTES.md` to `/DOCS/NOTES.md`
+- Update any links in the Documentation section
+- Verify all file paths are accurate
+
+## Step 6: Create Agent Reminder
+Add this notice at the top of INDEX.md after deployment:
+
+```markdown
+<!-- 
+🤖 AI AGENT REMINDER:
+After completing any development task, please update this INDEX.md by:
+1. Running: "Please add the previous developments to INDEX.md, following the best practices set forth in the indexing instructions"
+2. Updating file statuses (⏳ → 🚧 → ✅)
+3. Recording decisions in the Decision Log
+4. Updating the Current Status section
+-->
+```
+
+## Step 7: Verification Checklist
+Confirm these items before considering deployment complete:
+- [ ] INDEX.md exists in project root
+- [ ] All placeholders in INDEX.md are replaced with actual data
+- [ ] Every project file is listed in the File Registry
+- [ ] DOCS folder exists and contains documentation
+- [ ] PROJECT_INDEX_STARTER.md is moved to DOCS/
+- [ ] All root-level docs (except README.md and INDEX.md) are in DOCS/
+- [ ] File paths in INDEX.md are updated to reflect moves
+- [ ] Agent reminder is added to top of INDEX.md
+- [ ] Current Status section shows accurate project state
+
+## 📝 Post-Deployment Usage
+
+### For Every Development Session:
+1. **Start** by reading INDEX.md Current Status
+2. **During** development, note changes mentally or in comments
+3. **After** completing tasks, run:
+   > "Please add the previous developments to INDEX.md, following the best practices set forth in the indexing instructions"
+4. **Verify** all changes are reflected in INDEX.md
+
+### Maintenance Commands:
+```bash
+# Check INDEX.md is current
+git diff INDEX.md
+
+# Find files not in INDEX.md
+find . -type f -name "*.js" -o -name "*.ts" -o -name "*.jsx" | while read f; do grep -q "$f" INDEX.md || echo "Missing: $f"; done
+
+# List recently modified files to update
+find . -type f -mtime -1 ! -path "./.git/*"
+```
+
+---
+
+# 📋 PART 2: INDEX.md TEMPLATE
+
+> **Copy everything below this line into INDEX.md**
+
+---
+
+# INDEX.md - Master Project Registry
+## AI-Assisted Development Tracker
+
+<!-- 
+🤖 AI AGENT REMINDER:
+After completing any development task, please update this INDEX.md by:
+1. Running: "Please add the previous developments to INDEX.md, following the best practices set forth in the indexing instructions"
+2. Updating file statuses (⏳ → 🚧 → ✅)
+3. Recording decisions in the Decision Log
+4. Updating the Current Status section
+-->
 
 ## 📋 Project Overview
 
 **Project Name**: [PLACEHOLDER: Your Project Name]  
+**Repository**: [PLACEHOLDER: GitHub/GitLab URL]  
 **Description**: [PLACEHOLDER: 1-2 sentence description]  
 **Tech Stack**: [PLACEHOLDER: e.g., Next.js, Node.js, PostgreSQL]  
+**Architecture Pattern**: [PLACEHOLDER: e.g., MVC, Microservices, Serverless]  
 **Target Users**: [PLACEHOLDER: Who will use this]  
-**Key Features**: [PLACEHOLDER: 3-5 main features]  
+**Key Features**: 
+- [PLACEHOLDER: Feature 1]
+- [PLACEHOLDER: Feature 2]
+- [PLACEHOLDER: Feature 3]
 
 ---
 
@@ -42,239 +143,395 @@
 
 ```yaml
 Current Phase: [PLACEHOLDER: e.g., "Phase 1 - Foundation"]
-Status: [PLACEHOLDER: Not Started | In Progress | Complete]
-Completion: [PLACEHOLDER: e.g., "0%" or "3/10 tasks"]
+Overall Progress: [PLACEHOLDER: e.g., "15%" or "3/10 modules"]
+Status: [PLACEHOLDER: Active | On Hold | Blocked]
 Last Updated: [PLACEHOLDER: Date/Time]
-Active Agent: [PLACEHOLDER: Agent name/model]
-Session Started: [PLACEHOLDER: Time]
+Active Developer: [PLACEHOLDER: Human/AI Agent name]
+Current Focus: [PLACEHOLDER: What's being worked on now]
 Next Priority: [PLACEHOLDER: Specific next task]
-Blocking Issues: [PLACEHOLDER: None | Describe issue]
+Blocking Issues: [PLACEHOLDER: None | Describe blockers]
 ```
+
+### Quick Health Check
+- **Build Status**: [PLACEHOLDER: ✅ Passing | ❌ Failing | ⚠️ Unstable]
+- **Test Coverage**: [PLACEHOLDER: XX%]
+- **Lint Status**: [PLACEHOLDER: ✅ Clean | ⚠️ Warnings | ❌ Errors]
+- **Deploy Status**: [PLACEHOLDER: 🟢 Live | 🟡 Staging | 🔴 Local Only]
 
 ---
 
 ## 🎯 Development Phases
 
-> **Agent**: Define phases that make sense for your project. Each phase should be independently testable.
-
 ### Phase Overview
-- [ ] Phase 1: [PLACEHOLDER: e.g., "Foundation & Setup"]
-- [ ] Phase 2: [PLACEHOLDER: e.g., "Authentication"]
-- [ ] Phase 3: [PLACEHOLDER: e.g., "Core Data Models"]
-- [ ] Phase 4: [PLACEHOLDER: e.g., "Business Logic"]
-- [ ] Phase 5: [PLACEHOLDER: e.g., "API Layer"]
-- [ ] Phase 6: [PLACEHOLDER: e.g., "Frontend"]
-- [ ] Phase 7: [PLACEHOLDER: e.g., "Testing & Polish"]
+- [ ] **Phase 1**: [PLACEHOLDER: e.g., "Foundation & Setup"]
+- [ ] **Phase 2**: [PLACEHOLDER: e.g., "Core Data Models"]
+- [ ] **Phase 3**: [PLACEHOLDER: e.g., "Authentication & Authorization"]
+- [ ] **Phase 4**: [PLACEHOLDER: e.g., "Business Logic Layer"]
+- [ ] **Phase 5**: [PLACEHOLDER: e.g., "API Development"]
+- [ ] **Phase 6**: [PLACEHOLDER: e.g., "Frontend Implementation"]
+- [ ] **Phase 7**: [PLACEHOLDER: e.g., "Testing & Optimization"]
+- [ ] **Phase 8**: [PLACEHOLDER: e.g., "Deployment & DevOps"]
 
-### Phase Details
+### Detailed Phase Breakdown
 
 #### Phase 1: [PLACEHOLDER: Phase Name]
 **Goal**: [PLACEHOLDER: What this phase accomplishes]  
-**Success Criteria**: [PLACEHOLDER: How to know it's complete]  
+**Success Criteria**: 
+- [PLACEHOLDER: Measurable outcome 1]
+- [PLACEHOLDER: Measurable outcome 2]
 **Dependencies**: [PLACEHOLDER: What must exist first]  
-**Estimated Time**: [PLACEHOLDER: Hours/Days]  
+**Estimated Effort**: [PLACEHOLDER: Story points or hours]  
+**Actual Effort**: [PLACEHOLDER: Track actual time spent]
 
 [PLACEHOLDER: Repeat for each phase]
 
 ---
 
-## 📁 File Registry
+## 📁 Complete File Registry
 
-> **Agent**: Track EVERY file you plan to create or modify. Update status as you work.
+> **Legend**: ⏳ Pending | 🚧 In Progress | ✅ Complete | ❌ Deprecated | 🔒 Do Not Modify
 
-### Configuration Files (Root)
-| File | Purpose | Status | Dependencies | Notes |
-|------|---------|--------|--------------|-------|
-| `package.json` | Project dependencies | ⏳ Pending | - | [PLACEHOLDER] |
-| `.env.template` | Environment template | ⏳ Pending | - | [PLACEHOLDER] |
-| `[PLACEHOLDER]` | [PLACEHOLDER] | ⏳ Pending | - | - |
+### Root Configuration Files
+| File | Purpose | Status | Owner | Last Modified | Notes |
+|------|---------|--------|-------|---------------|-------|
+| `package.json` | Dependencies & Scripts | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| `tsconfig.json` | TypeScript Config | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| `.env.template` | Environment Template | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| `.gitignore` | Git Ignore Rules | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| `README.md` | Project Documentation | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| `INDEX.md` | This File | ✅ Complete | AI System | [PLACEHOLDER] | Auto-generated |
 
-### Source Files (/src)
+### Source Code (/src or /app)
 
-#### [PLACEHOLDER: Module Name] Module
-| File | Purpose | Status | Dependencies | Notes |
-|------|---------|--------|--------------|-------|
-| `/src/[path]` | [Purpose] | ⏳ Pending | [Dependencies] | [Notes] |
+#### [PLACEHOLDER: Module/Feature Name]
+| File | Purpose | Status | Dependencies | Test Coverage | Notes |
+|------|---------|--------|--------------|---------------|-------|
+| `/src/[path]/[file]` | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
-[PLACEHOLDER: Repeat for each module]
+[PLACEHOLDER: Repeat for each module/feature area]
 
-### Test Files (/tests)
-| File | Purpose | Status | Coverage Target | Notes |
-|------|---------|--------|----------------|-------|
-| `/tests/[path]` | [Purpose] | ⏳ Pending | [X%] | [Notes] |
+### Test Files (/tests or /__tests__)
+| File | Testing | Status | Type | Coverage | Last Run |
+|------|---------|--------|------|----------|----------|
+| `/tests/[path]` | [PLACEHOLDER] | [PLACEHOLDER] | Unit/Integration/E2E | [PLACEHOLDER]% | [PLACEHOLDER] |
+
+### Documentation (/DOCS)
+| File | Content | Status | Audience | Last Updated |
+|------|---------|--------|----------|--------------|
+| `/DOCS/PROJECT_INDEX_STARTER.md` | Index System Template | ✅ Complete | AI Agents | [PLACEHOLDER] |
+| `/DOCS/[PLACEHOLDER]` | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+### Build & Distribution (/dist, /build)
+| Path | Content | Generated By | Git Ignored | Notes |
+|------|---------|--------------|-------------|-------|
+| `/dist/` | [PLACEHOLDER] | [PLACEHOLDER] | Yes/No | [PLACEHOLDER] |
+| `/build/` | [PLACEHOLDER] | [PLACEHOLDER] | Yes/No | [PLACEHOLDER] |
 
 ---
 
 ## 🔄 Dependency Map
 
-> **Agent**: Document how modules connect. Update when you discover new dependencies.
-
+### Module Dependency Graph
 ```
 [PLACEHOLDER: Visual representation of module dependencies]
-Example:
+Example Format:
   index.ts
-  ├── config/* (standalone)
-  ├── auth/* → config
+  ├── config/* (standalone - no deps)
   ├── database/* → config
-  └── api/* → auth, database
+  ├── models/* → database
+  ├── auth/* → models, config
+  ├── services/* → models, auth
+  └── api/* → services, auth
 ```
 
-### External Dependencies
+### Package Dependencies
 ```json
 {
-  "production": [
-    "[PLACEHOLDER: package-name]"
-  ],
-  "development": [
-    "[PLACEHOLDER: dev-package]"
-  ]
+  "production": {
+    "[PLACEHOLDER: package]": "[PLACEHOLDER: version]",
+  },
+  "development": {
+    "[PLACEHOLDER: package]": "[PLACEHOLDER: version]",
+  },
+  "peerDependencies": {
+    "[PLACEHOLDER: package]": "[PLACEHOLDER: version]",
+  }
 }
 ```
 
-### Internal Dependencies
-- Module A requires: [PLACEHOLDER]
-- Module B requires: [PLACEHOLDER]
+### Circular Dependencies Detected
+| File A | File B | Resolution | Priority |
+|--------|--------|------------|----------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
 ---
 
 ## 🔌 API/Interface Registry
 
-> **Agent**: List all public APIs, routes, or interfaces that other modules will use.
+### REST API Endpoints
+| Method | Path | Purpose | Status | Auth | Rate Limit | Version |
+|--------|------|---------|--------|------|------------|---------|
+| GET | `/api/[path]` | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | v1 |
+| POST | `/api/[path]` | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | v1 |
 
-### REST Endpoints
-| Method | Path | Purpose | Status | Auth Required |
-|--------|------|---------|--------|---------------|
-| GET | `/api/[path]` | [Purpose] | ⏳ Pending | Yes/No |
-| POST | `/api/[path]` | [Purpose] | ⏳ Pending | Yes/No |
+### GraphQL Schema
+| Type | Name | Purpose | Status | Resolvers |
+|------|------|---------|--------|-----------|
+| Query | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| Mutation | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
-### Key Interfaces/Types
-| Name | Location | Purpose | Status |
-|------|----------|---------|--------|
-| `[InterfaceName]` | `/src/types/[file]` | [Purpose] | ⏳ Pending |
+### WebSocket Events
+| Event | Direction | Payload | Purpose | Status |
+|-------|-----------|---------|---------|--------|
+| [PLACEHOLDER] | emit/on | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+### Database Schema
+| Table/Collection | Purpose | Relationships | Indexes | Status |
+|-----------------|---------|---------------|---------|--------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+### Key Types/Interfaces
+| Name | Location | Purpose | Extends | Exported |
+|------|----------|---------|---------|----------|
+| [PLACEHOLDER] | `/src/types/[file]` | [PLACEHOLDER] | [PLACEHOLDER] | Yes/No |
 
 ---
 
 ## 🧪 Testing Strategy
 
-### Coverage Goals
-- Unit Tests: [PLACEHOLDER: e.g., "80%"]
-- Integration Tests: [PLACEHOLDER: e.g., "Critical paths"]
-- E2E Tests: [PLACEHOLDER: e.g., "User workflows"]
+### Coverage Requirements
+| Type | Target | Current | Gap | Priority |
+|------|--------|---------|-----|----------|
+| Unit Tests | [PLACEHOLDER]% | [PLACEHOLDER]% | [PLACEHOLDER]% | [PLACEHOLDER] |
+| Integration | [PLACEHOLDER]% | [PLACEHOLDER]% | [PLACEHOLDER]% | [PLACEHOLDER] |
+| E2E Tests | [PLACEHOLDER]% | [PLACEHOLDER]% | [PLACEHOLDER]% | [PLACEHOLDER] |
+| Performance | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
 ### Test Commands
 ```bash
-# [PLACEHOLDER: Add your test commands]
-npm test          # Run all tests
-npm test:unit     # Unit tests only
-npm test:e2e      # End-to-end tests
+# Test execution commands
+npm test              # [PLACEHOLDER: Description]
+npm run test:unit     # [PLACEHOLDER: Description]
+npm run test:e2e      # [PLACEHOLDER: Description]
+npm run test:coverage # [PLACEHOLDER: Description]
 ```
+
+### Critical Test Scenarios
+1. [PLACEHOLDER: Business critical flow]
+2. [PLACEHOLDER: Security sensitive operation]
+3. [PLACEHOLDER: High-traffic endpoint]
+4. [PLACEHOLDER: Data integrity check]
 
 ---
 
-## 🚀 Quick Start Commands
+## 🚀 Development Commands
 
-> **Agent**: Keep these updated so any agent can start immediately.
-
+### Initial Setup
 ```bash
-# Initial Setup
-[PLACEHOLDER: git clone command]
-[PLACEHOLDER: install command]
-[PLACEHOLDER: environment setup]
+# Clone and setup
+git clone [PLACEHOLDER: repository URL]
+cd [PLACEHOLDER: project name]
+npm install  # or yarn/pnpm
 
-# Development
-[PLACEHOLDER: dev server command]
-[PLACEHOLDER: build command]
+# Environment setup
+cp .env.template .env.local
+# Edit .env.local with your values
 
-# Testing
-[PLACEHOLDER: test command]
+# Database setup (if applicable)
+[PLACEHOLDER: Database setup commands]
+```
 
-# Deployment
-[PLACEHOLDER: deploy command]
+### Development Workflow
+```bash
+# Start development server
+npm run dev
+
+# Run tests in watch mode
+npm test -- --watch
+
+# Check code quality
+npm run lint
+npm run type-check
+
+# Build for production
+npm run build
+```
+
+### Deployment
+```bash
+# Staging deployment
+[PLACEHOLDER: Staging deploy command]
+
+# Production deployment
+[PLACEHOLDER: Production deploy command]
+
+# Rollback
+[PLACEHOLDER: Rollback command]
 ```
 
 ---
 
-## 📝 Agent Handoff Checklist
+## 📝 Environment Variables
 
-Before ending your session, verify:
-- [ ] All modified files are saved
-- [ ] Status indicators are accurate
-- [ ] DEVELOPMENT_LOG.md is updated
-- [ ] Tests pass for completed work
-- [ ] Next priority is clear
-- [ ] Any blocking issues are documented
-- [ ] Environment setup is documented
-- [ ] Quick start commands work
+| Variable | Purpose | Required | Default | Example |
+|----------|---------|----------|---------|---------|
+| [PLACEHOLDER] | [PLACEHOLDER] | Yes/No | [PLACEHOLDER] | [PLACEHOLDER] |
 
 ---
 
-## ⚠️ Known Issues & Workarounds
+## ⚠️ Known Issues & Technical Debt
 
-> **Agent**: Document any issues and their temporary solutions.
+### Critical Issues
+| Issue | Impact | Workaround | Fix ETA | Owner |
+|-------|--------|------------|---------|-------|
+| [PLACEHOLDER] | High/Medium/Low | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
-| Issue | Workaround | Permanent Fix Needed |
-|-------|------------|---------------------|
-| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+### Technical Debt Register
+| Item | Type | Effort | Priority | Notes |
+|------|------|--------|----------|-------|
+| [PLACEHOLDER] | Code/Design/Docs | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
----
-
-## 📚 Project Documentation
-
-| Document | Purpose | Location | Status |
-|----------|---------|----------|--------|
-| README.md | User documentation | `/README.md` | ⏳ Pending |
-| API.md | API documentation | `/docs/API.md` | ⏳ Pending |
-| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | ⏳ Pending |
+### TODO Comments in Code
+| Location | Comment | Priority | Added By | Date |
+|----------|---------|----------|----------|------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
 ---
 
 ## 🎯 Decision Log
 
-> **Agent**: Document important architectural decisions.
-
-| Date | Decision | Reasoning | Impact |
-|------|----------|-----------|--------|
-| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| Date | Decision | Alternatives Considered | Reasoning | Impact | Revisit Date |
+|------|----------|------------------------|-----------|--------|--------------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
 ---
 
-## 📊 Progress Metrics
+## 📊 Metrics & Performance
 
-**Overall Completion**: [PLACEHOLDER: 0%]  
-**Files Created**: [PLACEHOLDER: 0/50]  
-**Tests Passing**: [PLACEHOLDER: 0/0]  
-**Current Velocity**: [PLACEHOLDER: files/hour]  
-**Estimated Completion**: [PLACEHOLDER: date/time]  
+### Build Metrics
+| Metric | Current | Target | Status |
+|--------|---------|--------|--------|
+| Build Time | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| Bundle Size | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| Lighthouse Score | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
----
-
-## 🔄 Last 5 Actions
-
-> **Agent**: Quick reference of recent work. Update as you work.
-
-1. [PLACEHOLDER: Most recent action]
-2. [PLACEHOLDER: Previous action]
-3. [PLACEHOLDER: Earlier action]
-4. [PLACEHOLDER: Earlier action]
-5. [PLACEHOLDER: Earlier action]
+### Runtime Performance
+| Metric | Current | Target | Status |
+|--------|---------|--------|--------|
+| API Response Time (p95) | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| Memory Usage | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| Error Rate | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
 ---
 
-## 💡 Agent Notes
+## 🔄 Recent Changes Log
 
-> **Agent**: Leave helpful notes for the next session/agent.
-
-**Environment Quirks**: [PLACEHOLDER]  
-**Useful Resources**: [PLACEHOLDER]  
-**Key Decisions Made**: [PLACEHOLDER]  
-**Recommended Next Steps**: [PLACEHOLDER]  
+### Last 10 Significant Changes
+| Date | Change | Files Affected | Developer | Commit/PR |
+|------|--------|----------------|-----------|-----------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
 
 ---
 
-**Index Version**: 1.0.0  
-**Template Source**: Universal AI Agent Development Tracker  
+## 🚧 Active Work Items
+
+### Currently In Progress
+| Item | Developer | Started | Target | Branch | Blockers |
+|------|-----------|---------|--------|--------|----------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+### Queue (Next 5 Items)
+| Priority | Item | Estimated Effort | Dependencies | Assigned To |
+|----------|------|------------------|--------------|-------------|
+| 1 | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| 2 | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+---
+
+## 📚 Resources & Links
+
+### External Documentation
+- [PLACEHOLDER: API Documentation URL]
+- [PLACEHOLDER: Design System URL]
+- [PLACEHOLDER: Deployment Guide URL]
+
+### Internal Resources
+- [Architecture Diagrams](/DOCS/[PLACEHOLDER])
+- [Onboarding Guide](/DOCS/[PLACEHOLDER])
+- [Style Guide](/DOCS/[PLACEHOLDER])
+
+### Monitoring & Observability
+- [PLACEHOLDER: Logging Dashboard URL]
+- [PLACEHOLDER: Metrics Dashboard URL]
+- [PLACEHOLDER: Error Tracking URL]
+
+---
+
+## 🤝 Team & Ownership
+
+### Module Ownership
+| Module | Primary Owner | Backup Owner | Review Required |
+|--------|--------------|--------------|-----------------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | Yes/No |
+
+### Contact Points
+| Role | Name/Identifier | Contact | Timezone |
+|------|-----------------|---------|----------|
+| Project Lead | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| Tech Lead | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+| AI Agent Handler | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+---
+
+## 🔐 Security Considerations
+
+### Security Checklist
+- [ ] Authentication implemented
+- [ ] Authorization rules defined
+- [ ] Input validation on all endpoints
+- [ ] SQL injection prevention
+- [ ] XSS protection
+- [ ] CSRF tokens implemented
+- [ ] Secrets in environment variables
+- [ ] Dependencies regularly updated
+- [ ] Security headers configured
+- [ ] Rate limiting active
+
+### Sensitive Data Locations
+| Data Type | Location | Encryption | Access Control |
+|-----------|----------|------------|----------------|
+| [PLACEHOLDER] | [PLACEHOLDER] | Yes/No | [PLACEHOLDER] |
+
+---
+
+## 📈 Project Velocity
+
+### Sprint/Week Metrics
+| Period | Planned | Completed | Velocity | Notes |
+|--------|---------|-----------|----------|-------|
+| [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] |
+
+---
+
+**Index Version**: 2.0.0  
+**Schema Version**: 2024.12  
 **Last Structure Update**: [PLACEHOLDER: Date]  
+**Next Review Date**: [PLACEHOLDER: Date]  
 
 ---
 
-### 🤖 Remember: This index is your map. Keep it accurate, and you'll never get lost.
+### 🤖 AI Agent Instructions
+
+This INDEX.md is your single source of truth. Before starting any work:
+1. Read the Current Status section
+2. Check Active Work Items
+3. Review Recent Changes
+4. Verify your task isn't blocked
+
+After completing work:
+1. Update file statuses in the registry
+2. Add to Recent Changes Log
+3. Update Current Status
+4. Run: "Please add the previous developments to INDEX.md, following the best practices set forth in the indexing instructions"
+
+Remember: A well-maintained index enables seamless collaboration between human and AI developers.
